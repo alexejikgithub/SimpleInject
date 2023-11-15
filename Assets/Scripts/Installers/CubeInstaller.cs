@@ -4,8 +4,8 @@ public class CubeInstaller : MonoInstaller
 {
 	[SerializeField] private Cube _cube;
 
-	public override void InstallBindings()
+	public override void InstallBindings(DiContainer container)
 	{
-		_container.Bind<Cube>(_cube);
+		container.Bind(_cube);
 	}
 }

@@ -5,15 +5,11 @@ public class SceneContext : MonoBehaviour
 
 	[SerializeField] private MonoInstaller[] _monoinstallers;
 
+	private static SceneContext _instance;
 	private DiContainer _diContaier;
 
-	public DiContainer Container => _diContaier; 
-
-
-	private static SceneContext _instance;
-
 	public static SceneContext Instance => _instance;
-
+	public DiContainer Container => _diContaier;
 
 	private void Awake()
 	{
@@ -26,8 +22,7 @@ public class SceneContext : MonoBehaviour
 	{
 		foreach(var monoInstaller in _monoinstallers)
 		{
-			monoInstaller.SetContainer(_diContaier);
-			monoInstaller.InstallBindings();
+			monoInstaller.InstallBindings(_diContaier);
 		}
 	}
 
